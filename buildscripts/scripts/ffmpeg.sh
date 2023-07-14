@@ -177,6 +177,7 @@ cpuflags=
 	--enable-parser=mpeg4video \
 	--enable-parser=mpegvideo \
 	\
+	--enable-filter=overlay \
 	--enable-filter=equalizer \
 	\
 	--enable-protocol=async \
