@@ -181,15 +181,25 @@ cpuflags=
 	--enable-filter=equalizer \
 	\
 	--enable-protocol=async \
+	--enable-protocol=cache \
+	--enable-protocol=data \
 	--enable-protocol=ffrtmphttp \
-	--enable-protocol=rtmp \
-	--enable-protocol=rtmpt \
-	--enable-protocol=rtsp \
-	--enable-protocol=rtmp* \
-	--enable-protocol=rtp \
-	--enable-protocol=udp \
-	--enable-protocol=tcp \
+	--enable-protocol=file \
+	--enable-protocol=ftp \
+	--enable-protocol=hls \
+	--enable-protocol=http \
+	--enable-protocol=httpproxy \
+	--enable-protocol=https \
 	--enable-protocol=pipe \
+	--enable-protocol=rtmp \
+	--enable-protocol=rtmps \
+	--enable-protocol=rtmpt \
+	--enable-protocol=rtmpts \
+	--enable-protocol=rtp \
+	--enable-protocol=subfile \
+	--enable-protocol=tcp \
+	--enable-protocol=tls \
+	--enable-protocol=srt \
 
 make -j$cores
 make DESTDIR="$prefix_dir" install
