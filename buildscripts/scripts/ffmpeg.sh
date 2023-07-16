@@ -142,6 +142,17 @@ cpuflags=
 	--enable-decoder=vplayer \
 	--enable-decoder=webvtt \
 	\
+	--enable-decoder=mjpeg \
+	--enable-decoder=ljpeg \
+	--enable-decoder=jpegls \
+	--enable-decoder=jpeg2000 \
+	--enable-decoder=png \
+	--enable-decoder=gif \
+	--enable-decoder=bmp \
+	--enable-decoder=tiff \
+	--enable-decoder=webp \
+	--enable-decoder=jpegls \
+	\
 	--enable-demuxer=concat \
 	--enable-demuxer=data \
 	--enable-demuxer=flv \
