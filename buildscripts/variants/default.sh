@@ -87,7 +87,6 @@ cpuflags=
 	--enable-swresample \
 	\
 	--enable-decoder=flv \
-	--enable-decoder=flv \
 	--enable-decoder=h263 \
 	--enable-decoder=h263i \
 	--enable-decoder=h263p \
@@ -103,6 +102,10 @@ cpuflags=
 	--enable-decoder=hevc* \
 	--enable-decoder=av1* \
 	--enable-decoder=libdav1d \
+	--enable-decoder=theora \
+	--enable-decoder=msmpeg* \
+	--enable-decoder=mjpeg \
+	--enable-decoder=wmv* \
 	\
 	--enable-decoder=aac* \
 	--enable-decoder=ac3 \
