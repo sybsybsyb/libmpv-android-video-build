@@ -13,6 +13,8 @@ else
 	exit 255
 fi
 
+unset CC CXX # meson wants these unset
+
 meson setup $build --cross-file "$prefix_dir"/crossfile.txt \
 	--default-library shared -Dprefer_static=true \
 	-Dgpl=false -Dcplayer=false \
