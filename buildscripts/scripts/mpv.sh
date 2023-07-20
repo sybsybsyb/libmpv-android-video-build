@@ -1,7 +1,8 @@
 #!/bin/bash -e
 
-. ../../include/depinfo.sh
 . ../../include/path.sh
+
+build=_build$ndk_suffix
 
 if [ "$1" == "build" ]; then
 	true
@@ -12,7 +13,6 @@ else
 	exit 255
 fi
 
-PKG_CONFIG="pkg-config --static" \
 meson setup $build --cross-file "$prefix_dir"/crossfile.txt \
 	--default-library shared -Dprefer_static=true \
 	-Dgpl=false -Dcplayer=false \
