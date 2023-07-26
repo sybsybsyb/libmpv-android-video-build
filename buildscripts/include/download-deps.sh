@@ -30,6 +30,13 @@ mkdir -p deps && cd deps
 # libass
 [ ! -d libass ] && git clone --depth 1 --branch $v_libass https://github.com/libass/libass.git libass
 
+# shaderc
+mkdir -p shaderc
+cat >shaderc/README <<'HEREDOC'
+Shaderc sources are provided by the NDK.
+see <ndk>/sources/third_party/shaderc
+HEREDOC
+
 # mpv
 [ ! -d mpv ] && git clone --depth 1 --branch v$v_mpv https://github.com/mpv-player/mpv.git mpv
 
