@@ -14,7 +14,7 @@ v_mbedtls=3.4.0
 v_dav1d=1.2.0
 v_libxml2=2.10.3
 v_ffmpeg=6.0
-v_mpv=0.35.1
+v_mpv=0.36.0
 
 
 ## Dependency tree
