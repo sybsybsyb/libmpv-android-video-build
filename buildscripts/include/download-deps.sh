@@ -38,7 +38,9 @@ see <ndk>/sources/third_party/shaderc
 HEREDOC
 
 # mpv
-[ ! -d mpv ] && git clone --depth 1 --branch v$v_mpv https://github.com/mpv-player/mpv.git mpv
+# TODO(@alexmercerind):
+# [ ! -d mpv ] && git clone --depth 1 --branch v$v_mpv https://github.com/mpv-player/mpv.git mpv
+[ ! -d mpv ] && git clone --depth 1 --branch $v_mpv https://github.com/mpv-player/mpv.git mpv
 
 # media-kit-android-helper
 [ ! -d media-kit-android-helper ] && git clone --depth 1 --single-branch --branch main https://github.com/media-kit/media-kit-android-helper.git
