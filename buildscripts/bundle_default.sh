@@ -1,9 +1,9 @@
 # --------------------------------------------------
 
-if [ ! -f deps ]; then
+if [ ! -f "deps" ]; then
   sudo rm -r deps
 fi
-if [ ! -f prefix ]; then
+if [ ! -f "prefix" ]; then
   sudo rm -r prefix
 fi
 
@@ -12,7 +12,9 @@ fi
 
 # --------------------------------------------------
 
-rm scripts/ffmpeg.sh
+if [ ! -f "scripts/ffmpeg" ]; then
+  rm scripts/ffmpeg.sh
+fi
 cp flavors/default.sh scripts/ffmpeg.sh
 
 # --------------------------------------------------

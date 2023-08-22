@@ -16,26 +16,19 @@ fi
 
 unset CC CXX # meson wants these unset
 
-<<<<<<< HEAD
 meson setup $build --cross-file "$prefix_dir"/crossfile.txt \
-	--default-library shared -Dprefer_static=true \
-	-Dgpl=false -Dcplayer=false \
-	-Dvulkan=disabled -Dlibplacebo=disabled \
-	-Diconv=disabled -Dlua=enabled \
-	-Dlibmpv=true -Dmanpage-build=disabled
-=======
-PKG_CONFIG="pkg-config --static" \
-./waf configure \
-	--enable-lgpl \
-	--disable-cplayer \
-	--disable-vulkan \
-	--disable-libplacebo \
-	--disable-lua \
-	--disable-iconv \
-	--enable-libmpv-shared \
-	--disable-manpage-build \
-	-o "`pwd`/_build$ndk_suffix"
->>>>>>> 5564f4b1808f99844d0d32bf556f6c7bb7ff24d6
+	--prefix="$prefix_dir" \
+	--libdir="$prefix_dir/lib" \
+	--default-library shared \
+ 	--prefer-static \
+	-Dgpl=false \
+	-Dlibmpv=true \
+ 	-Dlua=disabled \
+ 	-Dcplayer=false \
+	-Diconv=disabled \
+	-Dvulkan=disabled \
+   	-Dlibplacebo=disabled \
+ 	-Dmanpage-build=disabled
 
 ninja -C $build -j$cores
 DESTDIR="$prefix_dir" ninja -C $build install
