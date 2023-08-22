@@ -37,6 +37,7 @@ cpuflags=
 	--disable-vulkan \
 	--disable-iconv \
 	--disable-stripping \
+	--pkg-config-flags="--static" \
 	\
 	--disable-muxers \
 	--disable-decoders \
