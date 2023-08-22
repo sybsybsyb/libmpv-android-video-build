@@ -20,15 +20,6 @@ index fb10e5e..afbc952 100644
   * this if blocking in mpv_wait_event() to wait for new events is not feasible.
 diff --git a/libmpv/mpv.def b/libmpv/mpv.def
 index 232490d..d7a2842 100644
---- a/libmpv/mpv.def
-+++ b/libmpv/mpv.def
-@@ -50,3 +50,4 @@ mpv_unobserve_property
- mpv_wait_async_requests
- mpv_wait_event
- mpv_wakeup
-+mpv_lavc_set_java_vm
-diff --git a/player/client.c b/player/client.c
-index dd81cdf..88d67c5 100644
 --- a/player/client.c
 +++ b/player/client.c
 @@ -22,6 +22,8 @@
