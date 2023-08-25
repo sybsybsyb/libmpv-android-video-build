@@ -148,7 +148,7 @@ cpuflags=
 	--enable-decoder=text \
 	--enable-decoder=vplayer \
 	--enable-decoder=webvtt \
-	--enable-decoder=mov_text \
+	--enable-decoder=movtext \
 	\
 	--enable-demuxer=concat \
 	--enable-demuxer=data \
