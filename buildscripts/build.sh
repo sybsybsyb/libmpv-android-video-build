@@ -46,6 +46,11 @@ loadarch () {
 	export prefix_dir="$PWD/prefix/$prefix_name"
 	export native_dir="$PWD/../libmpv/src/main/jniLibs/$prefix_name"
 	export CC=$cc_triple-clang
+	if [[ "$1" == arm* ]]; then
+		export AS="$CC"
+	else
+		export AS="nasm"
+	fi
 	export CXX=$cc_triple-clang++
 	export AR=llvm-ar
 	export RANLIB=llvm-ranlib
