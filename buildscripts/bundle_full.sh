@@ -70,7 +70,7 @@ zip -r "full-armeabi-v7a.jar"              lib/armeabi-v7a
 zip -r "full-x86.jar"                      lib/x86
 zip -r "full-x86_64.jar"                   lib/x86_64
 
-mkdir ../../../../../../../../../../output
+mkdir -p ../../../../../../../../../../output
 
 cp *.jar ../../../../../../../../../../output
 

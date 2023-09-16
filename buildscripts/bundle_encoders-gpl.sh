@@ -71,7 +71,7 @@ zip -r "encoders-gpl-armeabi-v7a.jar"              lib/armeabi-v7a
 zip -r "encoders-gpl-x86.jar"                      lib/x86
 zip -r "encoders-gpl-x86_64.jar"                   lib/x86_64
 
-mkdir ../../../../../../../../../../output
+mkdir -p ../../../../../../../../../../output
 
 cp *.jar ../../../../../../../../../../output
 
