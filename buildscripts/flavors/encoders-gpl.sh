@@ -27,8 +27,8 @@ cpuflags=
 	--target-os=android --enable-cross-compile --cross-prefix=$ndk_triple- --ar=$AR --cc=$CC --ranlib=$RANLIB \
 	--arch=${ndk_triple%%-*} --cpu=$cpu --pkg-config=pkg-config \
 	--extra-cflags="-I$prefix_dir/include $cpuflags" --extra-ldflags="-L$prefix_dir/lib" \
+	--pkg-config-flags="--static" \
 	\
-	--disable-gpl \
 	--disable-nonfree \
 	--enable-version3 \
 	--enable-static \
@@ -39,14 +39,17 @@ cpuflags=
 	--pkg-config-flags=--static \
 	\
 	--enable-decoders \
+	--enable-encoders \
+	--enable-libvorbis \
+	--enable-libvpx \
+	--enable-gpl \
+	--enable-libx264 \
+	--enable-muxers \
 	--enable-demuxers \
 	--enable-parsers \
 	\
-	--disable-muxers \
-	--disable-encoders \
 	--disable-protocols \
 	--disable-devices \
-	--disable-filters \
 	--disable-doc \
 	--disable-avdevice \
 	--disable-postproc \
@@ -86,8 +89,7 @@ cpuflags=
 	\
 	\
 	\
-	--enable-filter=overlay \
-	--enable-filter=equalizer \
+	--enable-filters \
 	\
 	--enable-protocol=async \
 	--enable-protocol=cache \

@@ -1,21 +1,22 @@
 # --------------------------------------------------
+set -euxo pipefail
 
-if [ ! -f "deps" ]; then
+export ENCODERS_GPL=1
+
+if [ -d deps ]; then
   sudo rm -r deps
 fi
-if [ ! -f "prefix" ]; then
+if [ -d prefix ]; then
   sudo rm -r prefix
 fi
 
 ./download.sh
-./patch.sh
+./patch-encoders-gpl.sh
 
 # --------------------------------------------------
 
-if [ ! -f "scripts/ffmpeg" ]; then
-  rm scripts/ffmpeg.sh
-fi
-cp flavors/full.sh scripts/ffmpeg.sh
+rm scripts/ffmpeg.sh
+cp flavors/encoders-gpl.sh scripts/ffmpeg.sh
 
 # --------------------------------------------------
 
@@ -65,10 +66,10 @@ cd build/app/outputs/apk/release/
 rm -r lib/*/libapp.so
 rm -r lib/*/libflutter.so
 
-zip -r "full-arm64-v8a.jar"                lib/arm64-v8a
-zip -r "full-armeabi-v7a.jar"              lib/armeabi-v7a
-zip -r "full-x86.jar"                      lib/x86
-zip -r "full-x86_64.jar"                   lib/x86_64
+zip -r "encoders-gpl-arm64-v8a.jar"                lib/arm64-v8a
+zip -r "encoders-gpl-armeabi-v7a.jar"              lib/armeabi-v7a
+zip -r "encoders-gpl-x86.jar"                      lib/x86
+zip -r "encoders-gpl-x86_64.jar"                   lib/x86_64
 
 mkdir -p ../../../../../../../../../../output
 
@@ -80,5 +81,5 @@ cd ../../../../../../../../..
 
 # --------------------------------------------------
 
-zip -r debug-symbols-full.zip prefix/*/lib
-cp debug-symbols-full.zip ../output
+zip -r debug-symbols-encoders-gpl.zip prefix/*/lib
+cp debug-symbols-encoders-gpl.zip ../output
