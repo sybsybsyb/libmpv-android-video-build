@@ -1,5 +1,5 @@
 diff --git a/meson.build b/meson.build
-index ce1fce2..6049156 100644
+index a56bb1f37c..7cd3b195f9 100644
 --- a/meson.build
 +++ b/meson.build
 @@ -23,6 +23,9 @@ libavutil = dependency('libavutil', version: '>= 56.70.100')
@@ -10,19 +10,19 @@ index ce1fce2..6049156 100644
 +libfftools_ffi = dependency('fftools-ffi')
 +
  libass = dependency('libass', version: '>= 0.12.2')
- pthreads = dependency('threads')
  
-@@ -35,7 +38,8 @@ dependencies = [libass,
+ # the dependency order of libass -> ffmpeg is necessary due to
+@@ -33,7 +36,8 @@ dependencies = [libass,
+                 libavformat,
                  libavutil,
                  libswresample,
-                 libswscale,
--                pthreads]
-+                pthreads,
+-                libswscale]
++                libswscale,
 +                libfftools_ffi]
  
  # Keeps track of all enabled/disabled features
  features = {
-@@ -246,7 +250,10 @@ sources = files(
+@@ -244,7 +248,10 @@ sources = files(
      ## tree_allocator
      'ta/ta.c',
      'ta/ta_talloc.c',
