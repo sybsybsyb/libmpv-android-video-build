@@ -50,7 +50,7 @@ see <ndk>/sources/third_party/shaderc
 HEREDOC
 
 # mpv
-[ ! -d mpv ] && git clone --depth 1 --branch v$v_mpv https://github.com/mpv-player/mpv.git mpv
+[ ! -d mpv ] && git clone --depth 1 --branch $v_mpv https://github.com/mpv-player/mpv.git mpv
 
 # fftools_ffi
 [ ! -d fftools_ffi ] && git clone --depth 1 --branch main https://github.com/moffatman/fftools-ffi.git fftools_ffi
