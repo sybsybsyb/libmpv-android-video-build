@@ -2,8 +2,7 @@ name: Build libmpv-android
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
 
 permissions:
@@ -18,42 +17,57 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3.3.0
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive        # 关键：拉取子模块
+
       - name: Setup Java JDK
-        uses: actions/setup-java@v3.9.0
+        uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: 11
+
       - name: Setup Flutter SDK
-        uses: subosito/flutter-action@v1
+        uses: subosito/flutter-action@v2
         with:
-          channel: "stable"
-      - name: Gradle Build Action
-        uses: gradle/gradle-build-action@v2.3.3
-      - name: Cache
+          channel: stable
+
+      - name: Cache NDK
         uses: actions/cache@v4
         with:
           path: /usr/local/lib/android/sdk/ndk/${{ env.NDK_VER }}
-          key: ${{ runner.os }}-${{ env.NDK_VER }}
-      - name: Symlink SDK
+          key: ${{ runner.os }}-ndk-${{ env.NDK_VER }}
+
+      - name: Install system deps
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y autoconf automake cmake libtool ninja-build pkg-config unzip curl git
+
+      - name: Create SDK symlink
         working-directory: ./buildscripts
         run: |
-          mkdir sdk
-          ln -s ${ANDROID_HOME} ./sdk/android-sdk-linux
-      - name: Bundle (default)
-        working-directory: ./buildscripts
+          mkdir -p sdk
+          ln -sf "$ANDROID_HOME" sdk/android-sdk-linux
+
+      - name: Grant execute permission to all scripts
         run: |
-          sudo chmod +x bundle_default.sh
-          ./bundle_default.sh
-      - uses: actions/upload-artifact@v4
+          find buildscripts -type f -name "*.sh" -exec chmod +x {} +
+
+      - name: Run bundle_default.sh
+        working-directory: ./buildscripts
+        run: ./bundle_default.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
         with:
           name: artifact
           path: ./output/*
-      - uses: softprops/action-gh-release@v1
+
+      - name: Create GitHub release (main only)
         if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v2
         with:
           draft: true
           prerelease: false
-          tag_name: "vnext"
-          files: |
-            output/*
+          tag_name: vnext
+          files: output/*
